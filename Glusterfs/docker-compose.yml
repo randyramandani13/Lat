@@ -1,0 +1,19 @@
+version: "3.4"
+
+services:
+  foo:
+    image: alpine
+    command: ping localhost
+    networks:
+      - net
+    volumes:
+      - vol1:/tmp
+
+networks:
+  net:
+    driver: overlay
+
+volumes:
+  vol1:
+    driver: glusterfs
+    name: "gfs/vol1"

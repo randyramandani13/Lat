@@ -1,0 +1,18 @@
+version: '3.4'
+
+volumes:
+  test1:
+    external: true
+
+networks:
+  appnet:
+    external: true
+
+services:
+  test:
+    image: alpine:edge
+    command: sh -c "ping 127.0.0.1"
+    volumes:
+      - test1:/data
+    networks:
+      - appnet
